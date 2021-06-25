@@ -16,11 +16,9 @@
  * @author  Nery Chapeton-Lamas <nchapetonLamas@miracosta.edu>
  * @version 1.0
  */
-
 package edu.miracosta.cs113;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PolynomialTest {
 
@@ -110,21 +108,25 @@ public class PolynomialTest {
     @Test
     public void testUniqueAddTermTypeBySizeOfList1() {
         Polynomial test = new Polynomial();
-        assertEquals("List NOT created as empty list", 0, test.getNumTerms());
+        //"List NOT created as empty list",
+        assertEquals( 0, test.getNumTerms());
 
         for(int i = 0; i < UNIQUE_TERMS1.length; i++) {
             test.addTerm(UNIQUE_TERMS1[i]);
-            assertEquals("Term was NOT added to list of terms", i+1, test.getNumTerms());
+            // "Term was NOT added to list of terms",
+            assertEquals( i+1, test.getNumTerms());
         }
     }
     @Test
     public void testUniqueAddTermTypeBySizeOfList2() {
         Polynomial test = new Polynomial();
-        assertEquals("List NOT created as empty list", 0, test.getNumTerms());
+        //"List NOT created as empty list"
+        assertEquals( 0, test.getNumTerms());
 
         for(int i = 0; i < UNIQUE_TERMS2.length; i++) {
             test.addTerm(UNIQUE_TERMS2[i]);
-            assertEquals("Term was NOT added to list of terms", i+1, test.getNumTerms());
+            //"Term was NOT added to list of terms"
+            assertEquals( i+1, test.getNumTerms());
         }
     }
 
@@ -133,7 +135,8 @@ public class PolynomialTest {
     public void testToStringUnique1() {
         Polynomial test = new Polynomial();
         String expected, actual;
-        assertEquals("Empty list of terms INCORRECT", "0", test.toString());
+        //"Empty list of terms INCORRECT",
+        assertEquals( "0", test.toString());
 
         for(int i = 0; i < UNIQUE_TERMS1.length; i++) {
             test.addTerm(UNIQUE_TERMS1[i]);
@@ -141,8 +144,8 @@ public class PolynomialTest {
             //remove whitespace from Strings, more flexible testing (doesn't depend on whitespace matching)
             expected = UNIQUE_POLY1[i].replaceAll(" ", "");
             actual = test.toString().replaceAll(" ", "");
-
-            assertEquals("Expected and actual polynomial toString DON'T match", expected, actual);
+            //"Expected and actual polynomial toString DON'T match",
+            assertEquals(expected, actual);
         }
     }
 
@@ -150,7 +153,8 @@ public class PolynomialTest {
     public void testToStringUnique2() {
         Polynomial test = new Polynomial();
         String expected, actual;
-        assertEquals("Empty list of terms INCORRECT", "0", test.toString());
+        //"Empty list of terms INCORRECT",
+        assertEquals( "0", test.toString());
 
         for(int i = 0; i < UNIQUE_TERMS2.length; i++) {
             test.addTerm(UNIQUE_TERMS2[i]);
@@ -159,7 +163,8 @@ public class PolynomialTest {
             expected = UNIQUE_POLY2[i].replaceAll(" ", "");
             actual = test.toString().replaceAll(" ", "");
 
-            assertEquals("Expected and actual polynomial toString DON'T match", expected, actual);
+            //"Expected and actual polynomial toString DON'T match",
+            assertEquals( expected, actual);
         }
     }
 
@@ -179,7 +184,8 @@ public class PolynomialTest {
             expectedTermIndex = UNIQUE_FINAL_ORDER1[i];
             expectedOrderedTerm = UNIQUE_TERMS1[ expectedTermIndex ];
 
-            assertEquals("Expected and actual term DON'T match", expectedOrderedTerm, actualOrderedTerm);
+            //"Expected and actual term DON'T match",
+            assertEquals(expectedOrderedTerm, actualOrderedTerm);
         }
     }
 
@@ -198,8 +204,8 @@ public class PolynomialTest {
             actualOrderedTerm = test.getTerm(i);
             expectedTermIndex = UNIQUE_FINAL_ORDER2[i];
             expectedOrderedTerm = UNIQUE_TERMS2[ expectedTermIndex ];
-
-            assertEquals("Expected and actual term DON'T match", expectedOrderedTerm, actualOrderedTerm);
+            //"Expected and actual term DON'T match",
+            assertEquals(expectedOrderedTerm, actualOrderedTerm);
         }
     }
 
@@ -207,19 +213,21 @@ public class PolynomialTest {
     public void testDuplicateAddTermTypeBySizeOfList() {
         int finalSize = DUPLICATE_TERMS.length - DUPLICATE_NUM;
         Polynomial test = new Polynomial();
-        assertEquals("List NOT created as empty list", 0, test.getNumTerms());
+        //"List NOT created as empty list",
+        assertEquals(0, test.getNumTerms());
 
         //add unique terms first and test size of list grows
         for(int i = 0; i < finalSize; i++) {
             test.addTerm(DUPLICATE_TERMS[i]);
-            assertEquals("Term was NOT added to list of terms", i+1, test.getNumTerms());
+            //"Term was NOT added to list of terms",
+            assertEquals(i+1, test.getNumTerms());
         }
 
         //add duplicate terms and test size does not grow
         for(int i = finalSize; i < DUPLICATE_TERMS.length; i++) {
             test.addTerm(DUPLICATE_TERMS[i]);
-            assertEquals("Term was added but DIDN'T combine like terms (matching exponents",
-                    finalSize, test.getNumTerms());
+            //"Term was added but DIDN'T combine like terms (matching exponents",
+            assertEquals(finalSize, test.getNumTerms());
         }
     }
 
@@ -237,7 +245,8 @@ public class PolynomialTest {
             actualOrderedTerm = test.getTerm(i);
             expectedOrderedTerm = DUPLICATE_FINAL_ORDER[i];
 
-            assertEquals("Expected and actual term DON'T match", expectedOrderedTerm, actualOrderedTerm);
+            //"Expected and actual term DON'T match",
+            assertEquals(expectedOrderedTerm, actualOrderedTerm);
         }
     }
 
@@ -248,11 +257,12 @@ public class PolynomialTest {
         for(Term t : UNIQUE_TERMS1) {
             test.addTerm(t);
         }
-        assertEquals("Size of built polynomial does NOT match expected", UNIQUE_TERMS1.length, test.getNumTerms());
+        //"Size of built polynomial does NOT match expected",
+        assertEquals(UNIQUE_TERMS1.length, test.getNumTerms());
 
         test.clear();
-
-        assertEquals("Size of built polynomial > 0 (should be empty list!)", 0, test.getNumTerms());
+        //"Size of built polynomial > 0 (should be empty list!)",
+        assertEquals( 0, test.getNumTerms());
     }
 
     @Test
@@ -273,7 +283,8 @@ public class PolynomialTest {
             actualTerm = test1.getTerm(i);
             expectedTerm = UNIQUE_ADD_ORDER[i];
 
-            assertEquals("Expected and actual term DON'T match", expectedTerm, actualTerm);
+            //"Expected and actual term DON'T match",
+            assertEquals( expectedTerm, actualTerm);
         }
     }
 
@@ -288,13 +299,15 @@ public class PolynomialTest {
 
         copy = new Polynomial(original);
 
-        assertTrue("Shallow copy of Polynomial object", original != copy);
+        //"Shallow copy of Polynomial object",
+        assertTrue(original != copy);
 
         for(int i = 0; i < original.getNumTerms(); i++) {
             originalTerm = original.getTerm(i);
             copyTerm = copy.getTerm(i);
 
-            assertTrue("Shallow copy of Term object in Polynomial", originalTerm != copyTerm);
+            //"Shallow copy of Term object in Polynomial",
+            assertTrue( originalTerm != copyTerm);
 
         }
     }
