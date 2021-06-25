@@ -5,6 +5,8 @@ import java.util.*;
 public class Driver {
     public static Scanner in = new Scanner(System.in);
     Polynomial p1 = new Polynomial();
+    Polynomial p2 = new Polynomial();
+    public static LinkedList<Polynomial> polyList= new LinkedList<Polynomial>();
 
     public static void main (String args[]) throws IOException{
         menu();
@@ -20,7 +22,6 @@ public class Driver {
                             "\n[4] exit the program");
             try {
                 int input2 = in.nextInt();
-//                Scanner.nextLine();
                 if(input2 == 1){
                     System.out.println("Editing first polynomial...");
                     editPolynomial();
@@ -28,7 +29,15 @@ public class Driver {
                     System.out.println("Editing second polynomial...");
                     editPolynomial();
                 }else if(input2 == 3){
-                    System.out.println("insert display");
+                    System.out.println("Adding Polynomials...");
+                    if(polyList.size() > 1){
+                        polyList.get(0).add(polyList.get(1) );
+                       System.out.println("= " + polyList.get(0).toString());
+
+                    }else{
+                        System.out.println("Incorrect list size!");
+                        continue;
+                    }
                 }else if(input2 == 4){
                     System.out.println("Exiting...");
                     System.exit(0);
@@ -40,12 +49,6 @@ public class Driver {
     }
 
     public static void editPolynomial() throws IOException {
-//        LinkedList<Polynomial> polyList= new LinkedList<Polynomial>();
-//        Term t1 = new Term(3,4);
-//        Term t2 = new Term(2,2);
-//        LinkedList<Term> termList= new LinkedList<Term>();
-//        termList.add(t1);
-//        termList.add(t2);
         Polynomial p1 = new Polynomial();
 
         int x = 0;
@@ -61,6 +64,7 @@ public class Driver {
                 int input = in.nextInt();
                 if (input == 1) {
                     System.out.println("clearing first polynomial...");
+                    p1.clear();
                 } else if (input == 2) {
                     System.out.println("creating polynomial..." );
                     System.out.println("enter coefficient:");
@@ -92,16 +96,94 @@ public class Driver {
 
                 } else if (input == 4) {
                     System.out.println("Exiting...");
-//                    System.exit(0);
                     break;
                 }
+
+                //add polynomial to list
+                polyList.add(p1);
             } catch (Exception e) {
                 System.out.println("wrong input");
                 continue;
             }
         }
     }
-
-
-
 }
+
+/*
+PROGRAM RUN
+-------------------------------------------------
+Select one of the following options:
+[1] edit first polynomial
+[2] edit second polynomial
+[3] display the result of adding the current first and second polynomial
+[4] exit the program
+1
+Editing first polynomial...
+Select one of the following options:
+[1] clear polynomial
+[2] create polynomial
+[3] add terms to the polynomial
+[4] go back a step
+2
+creating polynomial...
+enter coefficient:
+1
+enter exponent
+1
+Your Polynomial: 1x^1
+Select one of the following options:
+[1] clear polynomial
+[2] create polynomial
+[3] add terms to the polynomial
+[4] go back a step
+4
+Exiting...
+Select one of the following options:
+[1] edit first polynomial
+[2] edit second polynomial
+[3] display the result of adding the current first and second polynomial
+[4] exit the program
+2
+Editing second polynomial...
+Select one of the following options:
+[1] clear polynomial
+[2] create polynomial
+[3] add terms to the polynomial
+[4] go back a step
+4
+Exiting...
+Select one of the following options:
+[1] edit first polynomial
+[2] edit second polynomial
+[3] display the result of adding the current first and second polynomial
+[4] exit the program
+2
+Editing second polynomial...
+Select one of the following options:
+[1] clear polynomial
+[2] create polynomial
+[3] add terms to the polynomial
+[4] go back a step
+2
+creating polynomial...
+enter coefficient:
+4
+enter exponent
+4
+Your Polynomial: 4x^4
+Select one of the following options:
+[1] clear polynomial
+[2] create polynomial
+[3] add terms to the polynomial
+[4] go back a step
+4
+Exiting...
+Select one of the following options:
+[1] edit first polynomial
+[2] edit second polynomial
+[3] display the result of adding the current first and second polynomial
+[4] exit the program
+3
+Adding Polynomials...
+= 1x^1+4x^4
+ */

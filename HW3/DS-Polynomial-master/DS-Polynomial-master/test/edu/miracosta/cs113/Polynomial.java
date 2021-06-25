@@ -49,8 +49,7 @@ public class Polynomial{
     }
 
     public void clear(){
-        Polynomial temp = new Polynomial();
-        Polynomial test = temp;
+        termList.clear();
     }
 
     @Override
