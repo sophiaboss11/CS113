@@ -12,7 +12,8 @@ package model;
 
 import org.junit.Test;              //for @Test
 import org.junit.Assert;   //for asserTrue() method
-
+//import org.testng.annotations.Test;
+//import static org.junit.jupiter.api.Assertions.*;
 
 public class AssistantJackTest {
     /**

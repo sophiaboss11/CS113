@@ -1,6 +1,4 @@
 package edu.miracosta.cs113;
-//import java.lang;
-//import org.junit.jupiter.api.Test;
 
 public class Term implements Comparable<Term>{
 
@@ -33,13 +31,9 @@ public class Term implements Comparable<Term>{
         return exponent;
     }
 
-    public void addTerm(String s){
-        //fix
-
-    }
+    public void addTerm(String s){}
 
     public int getNumTerms(){
-        //fix
         return 1;
     }
 
@@ -51,14 +45,7 @@ public class Term implements Comparable<Term>{
         exponent = n;
     }
 
-    public void setAll(int n, int n2){
-
-    }
-
-//    @Override
-//    public Term clone(Term t){
-//        return t;
-//    }
+    public void setAll(int n, int n2){}
 
     public int compareTo(Term t){
         if(coefficient == t.getCoefficient() && exponent == t.getExponent()){

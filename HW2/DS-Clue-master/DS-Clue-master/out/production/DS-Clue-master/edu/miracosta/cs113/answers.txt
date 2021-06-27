@@ -1,0 +1,11 @@
+How often do you get a solution in fewer than 20 guesses?
+    It took about 20 tries until I got the solution:
+    "Total Checks = 17, Solution Theory is: Weapon = pipe (6), Person = Mrs. Peacock (5), Location = Hall (7)
+    WOW! You might as well be called Batman!"
+
+Does this change depending on the theory you test (1, 2, 3)?
+    It took 19 tries when only guessing 1 eah time, where I got the result:
+    "Total Checks = 4, Solution Theory is: Weapon = rope (1), Person = Ms. Scarlet (1), Location = Kitchen (1)"
+    The first time I used the ransom option each time, that took me around 20 tries, maybe more.
+
+What is good or bad about this strategy?
