@@ -6,14 +6,98 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
     	private Node<E> head = null;   // points to the head of the list
     	private Node<E> tail = null;   //points to the tail of the list
     	private int size = 0;    // the number of items in the list
-  
+
+    public DoubleLinkedList(){
+        head = null; tail = null; size = 0;
+    }
+
+
+    @Override
   public void add(int index, E obj)
-  { // Fill Here 
-   }
-  public void addFirst(E obj) { // Fill Here 
-	  
+  { // Fill Here
+//      try {
+//          this.listIterator().add(obj);
+//      } catch (NoSuchElementException exc) {
+//          throw new IndexOutOfBoundsException("Index: "+index);
+//      }
+//
+//      if(head == null){
+//          size++;
+          head = new Node<E>(obj);
+          tail = head;
+//          Node<E> afer = new Node<E>(index+1);
+//      }
+//      else if(nextItem == head){
+//          Node<E> newNode = new Node<E>(obj);
+//          newNode.next = nextItem;
+//          nextItem.prev = newNode;
+//          head = newNode;
+//      }else if(nextItem == null){
+//          Node<E> newNode = new Node<E>(obj);
+//          tail.next = newNode;
+//          newNode.prev = tail;
+//          tail = newNode;
+//      }else{
+//          Node<E> newNode = new Node<E>(obj);
+//          newNode.prev = nextItem.prev;
+//          nextItem.prev.next = newNode;
+//          newNode.next = nextItem;
+//          nextItem.prev = newNode;
+//      }
   }
+
+//  @Override
+//    public boolean add( E obj)
+//    { // Fill Here
+//        Node<E> nextItem = new Node<E>(obj); //?
+//
+//        if(head == null){
+//            head = new Node<E>(obj);
+//            tail = head;
+//            add(size(), (E) nextItem);
+//
+//        }
+//        else if(nextItem == head){
+//            Node<E> newNode = new Node<E>(obj);
+//            newNode.next = nextItem;
+//            nextItem.prev = newNode;
+//            head = newNode;
+//        }else if(nextItem == null){
+//            Node<E> newNode = new Node<E>(obj);
+//            tail.next = newNode;
+//            newNode.prev = tail;
+//            tail = newNode;
+//        }else{
+//            Node<E> newNode = new Node<E>(obj);
+//            newNode.prev = nextItem.prev;
+//            nextItem.prev.next = newNode;
+//            newNode.next = nextItem;
+//            nextItem.prev = newNode;
+//        }
+//
+//        return true;
+//    }
+
+//  public void addFirst(E obj) { // Fill Here
+////      ListIterator<E> iter = listIterator(0);
+////      iter.add(obj);
+//      /* 1. allocate node
+//       * 2. put in the data */
+//      Node new_Node = new Node(obj);
+//
+//      /* 3. Make next of new node as head and previous as NULL */
+//      new_Node.next = head;
+//      new_Node.prev = null;
+//
+//      /* 4. change prev of head node to new node */
+//      if (head != null)
+//          head.prev = new_Node;
+//
+//      /* 5. move the head to point to the new node */
+//      head = new_Node;
+//  }
   public void addLast(E obj) { // Fill Here
+      add(size, obj);
   }
 
   public E get(int index) 
@@ -51,6 +135,7 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
         private Node(E dataItem)  //constructor
         {   data = dataItem;   }
   }  // end class Node
+
 
   public class ListIter implements ListIterator<E> 
   {
@@ -92,9 +177,37 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
     {  return lastItemReturned.data; // Fill Here 
     }
 
+    @Override
     public void add(E obj) {
 
-    // Fill Here
-    }
+        Node<E> nextItem = new Node<E>(obj); //?
+//         head = nextItem;
+
+      if(head == null){
+          head = nextItem;
+          tail = nextItem;
+//          this.listIterator(index).add(nextItem);
+
+      }else if(nextItem == head){
+          Node<E> newNode = new Node<E>(obj);
+          newNode.next = nextItem;
+          nextItem.prev = newNode;
+          head = newNode;
+      }else if(nextItem == null){
+          Node<E> newNode = new Node<E>(obj);
+          tail.next = newNode;
+          newNode.prev = tail;
+          tail = newNode;
+      }else{
+          Node<E> newNode = new Node<E>(obj);
+          newNode.prev = nextItem.prev;
+          nextItem.prev.next = newNode;
+          newNode.next = nextItem;
+          nextItem.prev = newNode;
+      }
+
+
+    }//end of method add()
+
   }// end of inner class ListIter
 }// end of class DoubleLinkedList

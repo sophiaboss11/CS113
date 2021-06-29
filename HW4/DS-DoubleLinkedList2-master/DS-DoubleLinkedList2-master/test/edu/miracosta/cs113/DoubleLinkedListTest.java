@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Iterator;
+import java.util.*;
 
 import java.util.NoSuchElementException;
 
@@ -96,6 +97,7 @@ public class DoubleLinkedListTest {
         intList = new DoubleLinkedList<Integer>();
         charList = new DoubleLinkedList<Character>();
         doubleList = new DoubleLinkedList<Double>();
+//        stringList = null;
     }
 
     // region List tests ===============================================================================================
@@ -104,17 +106,19 @@ public class DoubleLinkedListTest {
 
     @Test
     public void testNewLinkedListBySize() {
-        assertTrue("String list should start as empty", stringList.isEmpty());
-        assertTrue("Integer list should start as empty", intList.isEmpty());
-        assertTrue("Character list should start as empty", charList.isEmpty());
-        assertTrue("Double list should start as empty", doubleList.isEmpty());
+        assertTrue("String list should start as empty", stringList.size() <= 0 );
+        assertTrue("Integer list should start as empty", intList.size() <= 0 );
+        assertTrue("Character list should start as empty", charList.size()  <= 0 );
+        assertTrue("Double list should start as empty", doubleList.size() <= 0 );
     }
 
     @Test
     public void testAddingOneBySize() {
+
         buildLists(1);
 
         assertEquals("String list should have size of 1", 1, stringList.size());
+        System.out.println(stringList.size());
         assertEquals("Integer list should have size of 1", 1, intList.size());
         assertEquals("Character list should have size of 1", 1, charList.size());
         assertEquals("Double list should have size of 1", 1, doubleList.size());
