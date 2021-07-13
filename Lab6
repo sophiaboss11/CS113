@@ -1,0 +1,38 @@
+
+CS 113
+Lab 6
+Sophia Boss
+7/13/2021
+--------------------------------------
+
+1. 
+a. the next node, a data field or list head
+b. the next node, the previous node, a data field
+c. the node that precedes it
+d. the node that we want to remove
+
+2.
+a. creates a reference to the second to last element of the list
+   link the node to the tail
+   sets the second to last element as the predecessor
+b. creates reference to head
+   resets vaue of the node 
+   sets second element to nodeRef(second to last element)
+   links head before noderef
+   sets head to predecessor of the node
+c. create new node
+   inserts node right after head
+   links to new predecessor
+
+
+3.1
+   references index of sam
+   creates list iterator
+   returns "Harry"
+   removes "Sam"
+
+3.2 
+   It will return null
+
+3.3
+   "Harry" would not be referenced
