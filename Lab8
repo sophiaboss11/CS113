@@ -1,0 +1,19 @@
+
+CS 113
+Lab 8
+Sophia Boss
+7/13/2021
+--------------------------------------
+
+//pseudo
+public void display(queue){
+	while(!queue.empty()){
+		System.out.println(queue.poll());
+	}
+}
+
+this algorithm will clear the queue
+
+2. 
+a. s minus the first element. q will have one element.
+b. s will have an item added. q is empty.
