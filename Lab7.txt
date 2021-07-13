@@ -1,0 +1,46 @@
+CS 113
+Lab 7
+Sophia Boss
+7/13/2021
+
+
+//pseudo
+public boolean empty(){
+	if (isEmpty() == true){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//pseudo
+public ArrayList<E> peek(){
+	return ArrayList<E>().get(0);
+}
+
+//pseudo
+public ArrayList<E> pop(){
+	return ArrayList<E>().get(0);
+	ArrayList<E>().remove(0);
+}
+
+//pseudo
+public ArrayList<E> push(E obj){
+	ArrayList<E>().add(obj);
+	return obj;
+}
+
+1. Jane
+Philip
+Dustin
+Robin
+Debbie
+Rich
+
+Top = Joseph
+       nextTop = Jane
+
+1. It returns each name while clearing the stack
+
+2. It returns each name while not clearing the stack
+
