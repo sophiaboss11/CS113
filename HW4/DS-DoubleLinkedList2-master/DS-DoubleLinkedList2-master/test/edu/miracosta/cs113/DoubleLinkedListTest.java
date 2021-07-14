@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Iterator;
-import java.util.*;
 
 import java.util.NoSuchElementException;
 
@@ -28,13 +27,13 @@ public class DoubleLinkedListTest {
     /** Expected values following the building of the linked lists */
     private static final String TO_STRING_EMPTY = "[]";
     private static final String[] TO_STRING_ADD1 = {"[first]",
-                                                    "[100]",
-                                                    "[A]",
-                                                    "[1.1]"};
+            "[100]",
+            "[A]",
+            "[1.1]"};
     private static final String[] TO_STRING_ADD3 = {"[first, second, third]",
-                                                    "[100, 200, 300]",
-                                                    "[A, B, C]",
-                                                    "[1.1, 2.2, 3.3]"};
+            "[100, 200, 300]",
+            "[A, B, C]",
+            "[1.1, 2.2, 3.3]"};
 
     /** Values inserted through linked list's add method */
     private static final String STRING_INSERT_VAL = "w00t";
@@ -47,9 +46,9 @@ public class DoubleLinkedListTest {
 
     /** Expected values following the insertion of an additional element */
     private static final String[] TO_STRING_INSERT = {"[w00t, first, second, third]",
-                                                    "[100, 555, 200, 300]",
-                                                    "[A, B, X, C]",
-                                                    "[1.1, 2.2, 3.3, -3.14]"};
+            "[100, 555, 200, 300]",
+            "[A, B, X, C]",
+            "[1.1, 2.2, 3.3, -3.14]"};
 
     /** Index of iterator by which the set. add and remove methods are called. stringList and intList will be modified
      *  following a call to next, whereas charList and doubleList will set following a call to previous. */
@@ -57,9 +56,9 @@ public class DoubleLinkedListTest {
 
     /** Expected values following the iterator's set or remove methods */
     private static final String[] TO_STRING_SET = { "[w00t, second, third]",
-                                                    "[100, 555, 300]",
-                                                    "[A, B, X]",
-                                                    "[1.1, -3.14, 3.3]"};
+            "[100, 555, 300]",
+            "[A, B, X]",
+            "[1.1, -3.14, 3.3]"};
 
     /** Class implementing the List interface */
     private List<String> stringList;
@@ -80,10 +79,10 @@ public class DoubleLinkedListTest {
      */
     public void buildLists(int num) {
         for (int i = 0; i < num; i ++) {
-            stringList.add(STRING_VALUES[i]);
-            intList.add(INT_VALUES[i]);
-            charList.add(CHAR_VALUES[i]);
-            doubleList.add(DOUBLE_VALUES[i]);
+            stringList.add(i, STRING_VALUES[i]);
+            intList.add(i, INT_VALUES[i]);
+            charList.add(i, CHAR_VALUES[i]);
+            doubleList.add(i, DOUBLE_VALUES[i]);
         }
     }
 
@@ -97,7 +96,6 @@ public class DoubleLinkedListTest {
         intList = new DoubleLinkedList<Integer>();
         charList = new DoubleLinkedList<Character>();
         doubleList = new DoubleLinkedList<Double>();
-//        stringList = null;
     }
 
     // region List tests ===============================================================================================
@@ -106,19 +104,17 @@ public class DoubleLinkedListTest {
 
     @Test
     public void testNewLinkedListBySize() {
-        assertTrue("String list should start as empty", stringList.size() <= 0 );
-        assertTrue("Integer list should start as empty", intList.size() <= 0 );
-        assertTrue("Character list should start as empty", charList.size()  <= 0 );
-        assertTrue("Double list should start as empty", doubleList.size() <= 0 );
+        assertTrue("String list should start as empty", stringList.isEmpty());
+        assertTrue("Integer list should start as empty", intList.isEmpty());
+        assertTrue("Character list should start as empty", charList.isEmpty());
+        assertTrue("Double list should start as empty", doubleList.isEmpty());
     }
 
     @Test
     public void testAddingOneBySize() {
-
         buildLists(1);
 
         assertEquals("String list should have size of 1", 1, stringList.size());
-        System.out.println(stringList.size());
         assertEquals("Integer list should have size of 1", 1, intList.size());
         assertEquals("Character list should have size of 1", 1, charList.size());
         assertEquals("Double list should have size of 1", 1, doubleList.size());
