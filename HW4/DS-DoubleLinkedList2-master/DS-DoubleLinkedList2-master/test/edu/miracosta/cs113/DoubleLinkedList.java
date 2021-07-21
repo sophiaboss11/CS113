@@ -1,64 +1,28 @@
 package edu.miracosta.cs113;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DoubleLinkedList<E> extends AbstractSequentialList<E>
 {  // Data fields
     	private Node<E> head = null;   // points to the head of the list
     	private Node<E> tail = null;   //points to the tail of the list
     	private int size = 0;    // the number of items in the list
-//        private Node<E> current = null;
+        private Node<E> current = null;
 
     public DoubleLinkedList(){
         head = null; tail = null; size = 0;
     }
-//    public DoubleLinkedList(Node<E> h, Node<E> t, int s){
-//        head = h; tail = t; size = s;
-//    }
+    public DoubleLinkedList(Node<E> h, Node<E> t, int s){
+        head = h; tail = t; size = s;
+    }
 
     @Override
   public void add(int index, E obj)
   { // Fill Here
       listIterator(index).add(obj);
+
   }
-
-//    @Override
-//  public boolean add(E obj)
-//  { // Fill Here
-//      listIterator(0).add(obj);
-//      return false;
-//  }
-
-//  @Override
-//    public boolean add( E obj)
-//    { // Fill Here
-//        Node<E> nextItem = new Node<E>(obj); //?
-//
-//        if(head == null){
-//            head = new Node<E>(obj);
-//            tail = head;
-//            add(size(), (E) nextItem);
-//
-//        }
-//        else if(nextItem == head){
-//            Node<E> newNode = new Node<E>(obj);
-//            newNode.next = nextItem;
-//            nextItem.prev = newNode;
-//            head = newNode;
-//        }else if(nextItem == null){
-//            Node<E> newNode = new Node<E>(obj);
-//            tail.next = newNode;
-//            newNode.prev = tail;
-//            tail = newNode;
-//        }else{
-//            Node<E> newNode = new Node<E>(obj);
-//            newNode.prev = nextItem.prev;
-//            nextItem.prev.next = newNode;
-//            newNode.next = nextItem;
-//            nextItem.prev = newNode;
-//        }
-//
-//        return true;
-//    }
 
   public void addFirst(E obj) { // Fill Here
 /*      ListIterator<E> iter = listIterator(0);
@@ -104,22 +68,78 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
   public ListIterator listIterator(ListIterator iter)
   {     return new ListIter( (ListIter) iter);  }
 
-   // @Override
-    public String toString(List<E> li){
-//        ListIter lii = new ListIter;
-        int s = li.size();
-        String out ="";
-        if( s > 0 ){
-//            for(int i =0; i<s;i++){
-////                System.out.println(li.get(i));
-//                out = out + li.get(i);
-//            }
-            out="list has elements(change later)";
+    //roString methods
+    public String stringToString(List<String> li){
+        String s="";
+        if(li.size() == 1) {
+            s = "[" + li.get(0) + "]";
         }else{
-//            System.out.println("[]");
-            out = "[]";
+            s="[";
+            for(int i = 0; i<li.size(); i++){
+                if (i < li.size() -1 ) {
+                    s = s + li.get(i) + ", ";
+                }else{
+                    s = s + li.get(i);
+                }
+            }
+            s = s + "]";
         }
-        return out;
+        return s;
+    }
+    public String intToString(List<Integer> li){
+        String s="";
+        if(li.size() == 1) {
+            s = "[" + li.get(0) + "]";
+        }else{
+            s="[";
+            for(int i = 0; i<li.size(); i++){
+                if (i < li.size() -1 ) {
+                    s = s + li.get(i) + ", ";
+                }else{
+                    s = s + li.get(i);
+                }
+            }
+            s = s + "]";
+        }
+        return s;
+    }
+    public String CharToString(List<Character> li){
+        String s="";
+        if(li.size() == 1) {
+            s = "[" + li.get(0) + "]";
+        }else{
+            s="[";
+            for(int i = 0; i<li.size(); i++){
+                if (i < li.size() -1 ) {
+                    s = s + li.get(i) + ", ";
+                }else{
+                    s = s + li.get(i);
+                }
+            }
+            s = s + "]";
+        }
+        return s;
+    }
+    public String doubleToString(List<Double> li){
+        String s="";
+        if(li.size() == 1) {
+            s = "[" + li.get(0) + "]";
+        }else{
+            s="[";
+            for(int i = 0; i<li.size(); i++){
+                if (i < li.size() -1 ) {
+                    s = s + li.get(i) + ", ";
+                }else{
+                    s = s + li.get(i);
+                }
+            }
+            s = s + "]";
+        }
+        return s;
+    }
+
+    public void clear(){
+        head = null; tail = null; size = 0;
     }
 
   // Inner Classes
@@ -202,12 +222,10 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
           nn.next = nextItem;
           head = nn;
       }else if(nextItem == null){
-          //Node<E> newNode = new Node<E>(obj);
           tail.next = nn;
           nn.prev = tail;
           tail = nn;
       }else{
-          //Node<E> newNode = new Node<E>(obj);
           nn.next = nextItem;
           nn.prev = nextItem.prev;
           nextItem.prev.next = nn;
@@ -215,7 +233,7 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
       }
         size++;
         index++;
-        lastItemReturned = null;
+        //lastItemReturned = null;
     }//end of method add()
 
   }// end of inner class ListIter
