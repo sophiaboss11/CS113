@@ -43,8 +43,17 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
   }
 
   public E get(int index) 
-  { 	ListIterator<E> iter = listIterator(index); 
-      	return iter.next();
+  {
+     // if(size < index || index < 0){
+
+      //}
+    try {
+        ListIterator<E> iter = listIterator(index);
+        return iter.next();
+    }catch(Exception e){
+        throw new IndexOutOfBoundsException("empty list, index == 0 " );
+    }
+
   }  
   public E getFirst() { return head.data;  }
   public E getLast() { return tail.data;  }
@@ -142,7 +151,26 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
         head = null; tail = null; size = 0;
     }
 
-  // Inner Classes
+    public int indexOf(){
+        for(int i=0; i< size; i++){
+            
+
+        }
+    }
+
+    //@Override
+    public boolean contains(Object o) {
+        //return super.contains(o);
+        boolean c = false;
+        for(int i=0; i< size; i++){
+            if(get(i) == o || get(i).equals(o)){
+                c=true;
+            }
+        }
+        return c;
+    }
+
+    // Inner Classes
   public static class Node<E>
   {      E data;
          Node<E> next = null;

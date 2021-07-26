@@ -1,4 +1,4 @@
-#StackQueue
+﻿#StackQueue
 Stack + Queue Implementation, Solving Palindrome using Stacks
 
 **[//Insert Build Status Image//]**
@@ -17,7 +17,8 @@ You are provided with a `StackInterface` to **implement your stack, make sure to
 
 Make sure to **provide a sequence diagram** for `isPalindrome()`, it should include more details than just the steps outlined above.  Add the image (PNG, JPEG, etc.) in markdown in the space below:
 
-**[//Insert Sequence Diagram//]**
+**[diagram.png]**
+![](diagram.png)
 
 ----------
 
@@ -50,3 +51,4 @@ Methods inherited from [interface](https://docs.oracle.com/javase/7/docs/api/jav
 >Pro-Tips:
 >- Read the tests thoroughly, note the situations they are testing, and devise a strategy on how to solve the palindrome checker.  Then create the sequence diagram, ensuring your logic is sound.  Finally, implement in code.
 >- Make sure to do the book reading, there's lots of code in there to help you along!
+

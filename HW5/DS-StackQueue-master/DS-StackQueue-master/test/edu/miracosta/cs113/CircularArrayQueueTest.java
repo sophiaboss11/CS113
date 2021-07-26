@@ -11,6 +11,7 @@ import static org.junit.Assert.fail;
 import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.*;
 
 /**
  * CircularArrayQueueTest : a test class for a Queue interface implementation which models a circular array.
@@ -63,7 +64,8 @@ public class CircularArrayQueueTest {
 
     @Test
     public void testPeekEmpty() {
-        assertEquals("Test peek failed - Call from an empty queue should return null.", null, circularQueue.peek());
+        assertEquals("Test peek failed - Call from an empty queue should return null.",
+                null, circularQueue.peek());
     }
 
     @Test
@@ -80,8 +82,10 @@ public class CircularArrayQueueTest {
     @Test
     public void testOfferOne() {
         populateQueue(1, true);
-        assertEquals("Test failed - Call to peek should return the head of this queue.", STRING_VALUES[0], circularQueue.peek());
-        assertEquals("Test failed - Call to element should return the head of this queue.", STRING_VALUES[0], circularQueue.element());
+        assertEquals("Test failed - Call to peek should return the head of this queue.",
+                STRING_VALUES[0], circularQueue.peek());
+        assertEquals("Test failed - Call to element should return the head of this queue.",
+                STRING_VALUES[0], circularQueue.element());
     }
 
     @Test
@@ -112,8 +116,11 @@ public class CircularArrayQueueTest {
     @Test
     public void testAddOne() {
         populateQueue(1, false);
-        assertEquals("Test failed - Call to peek should return the head of this queue.", STRING_VALUES[0], circularQueue.peek());
-        assertEquals("Test failed - Call to element should return the head of this queue.", STRING_VALUES[0], circularQueue.element());
+
+        assertEquals("Test failed - Call to peek should return the head of this queue.",
+                STRING_VALUES[0], circularQueue.peek());
+        assertEquals("Test failed - Call to element should return the head of this queue.",
+                STRING_VALUES[0], circularQueue.element());
     }
 
     @Test
@@ -144,7 +151,8 @@ public class CircularArrayQueueTest {
     @Test
     public void testPollEmpty() {
         // Attempt to poll from an empty queue
-        assertEquals("Test poll failed - Call from an empty queue should return null.", null, circularQueue.poll());
+        assertEquals("Test poll failed - Call from an empty queue should return null.",
+                null, circularQueue.poll());
     }
 
     @Test
@@ -204,11 +212,13 @@ public class CircularArrayQueueTest {
     public void testRemoveOne() {
         // Offer and remove one element
         circularQueue.offer(STRING_VALUES[0]);
-        assertEquals("Test remove failed - Call should return the head of the queue.", STRING_VALUES[0], circularQueue.remove());
+        assertEquals("Test remove failed - Call should return the head of the queue.",
+                STRING_VALUES[0], circularQueue.remove());
 
         // Add and remove another element
         circularQueue.add(STRING_VALUES[1]);
-        assertEquals("Test remove failed - Call should return the head of the queue.", STRING_VALUES[1], circularQueue.remove());
+        assertEquals("Test remove failed - Call should return the head of the queue.",
+                STRING_VALUES[1], circularQueue.remove());
     }
 
     @Test

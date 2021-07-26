@@ -6,6 +6,9 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 /**
  * PalindromeTest : a test class for isPalindrome, a method intended to utilize stacks to evaluate if a given
  * string is a palindrome.
@@ -14,6 +17,8 @@ import org.junit.Test;
  * forwards. Such sequences include "madam," "top spot," or "no lemon, no melon".
  */
 public class PalindromeTest {
+
+    public PalindromeTest(){}
 
     /** True test cases which include spaces and symbols */
     private static final String[] SIMPLE_TRUE = { "", " ", "A", "7", "%", "  ", "BB", "33", "**" };
@@ -41,11 +46,35 @@ public class PalindromeTest {
      * @return returns true if a palindrome (ignoring whitespace and case sensitivity), false otherwise
      */
     private boolean isPalindrome(String s) {
-
+        Boolean returnVal = true;
         // TODO:
         // Implement this method body using your ArrayListStack. Be mindful of your algorithm!
-        return false;
+        Stack<String> myStack = new Stack<>();
+        ArrayList<String> myList = new ArrayList<>();
+        if((s != null) ){
+            //populate stack
+            for(int i = 0 ; i < s.length() ; i ++){
+                String c = s.charAt(i) + "";
+                c = c.toLowerCase();
+                if(!( c.equals(" ") )) {
+                    System.out.println("[" + i + "] " + c);
+                    myStack.push(c);
+                    myList.add(c);
+                }
+            }
+            System.out.println();
+        }else{
+            throw new IllegalArgumentException();
+        }
 
+        //check if values at s = values at stack
+        for(int i = 0 ; i < myList.size() ; i++){
+
+            if(!( myList.get(i).equals( myStack.pop() ) )){
+                returnVal = false;
+            }
+        }
+        return returnVal;
     } // End of method isPalindrome
 
     @Test
