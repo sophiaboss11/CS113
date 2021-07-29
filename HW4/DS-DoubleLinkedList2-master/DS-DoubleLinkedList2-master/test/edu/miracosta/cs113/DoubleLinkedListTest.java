@@ -272,35 +272,38 @@ public class DoubleLinkedListTest {
         try {
             stringList.get(0);
             fail("String list get() test should have thrown exception for out of bounds (empty list, index == 0)");
-        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ throw new IndexOutOfBoundsException("Invalid index ");}
-//
-//        try {
-//            intList.get(1);
-//            fail("Integer list get() test should have thrown exception for out of bounds (empty list, index == 1)");
-//        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
-//
-//        buildLists(5);
-//
-//        // Attempt get from out-of-bounds indices
-//        try {
-//            charList.get(5);
-//            fail("Character list get() test should have thrown exception for out of bounds (index >= size)");
-//        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
-//
-//        try {
-//            doubleList.get(-1);
-//            fail("Double list get() test should have thrown exception for out of bounds (index < 0)");
-//        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
+        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
+
+        try {
+            intList.get(1);
+            fail("Integer list get() test should have thrown exception for out of bounds (empty list, index == 1)");
+        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
+
+        buildLists(5);
+
+        // Attempt get from out-of-bounds indices
+        try {
+            charList.get(5);
+            fail("Character list get() test should have thrown exception for out of bounds (index >= size)");
+        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
+
+        try {
+            doubleList.get(-1);
+            fail("Double list get() test should have thrown exception for out of bounds (index < 0)");
+        } catch (IndexOutOfBoundsException ioobe) { /*Test Passed*/ }
     }
 
     @Test
     public void testIndexOf() {
         buildLists(4);
-
-        assertEquals("Expected value in String list doesn't match indexOf() from your list", 0, stringList.indexOf(STRING_VALUES[0]));
-        assertEquals("Expected value in Integer list doesn't match indexOf() from your list", 1, intList.indexOf(INT_VALUES[1]));
-        assertEquals("Expected value in Character list doesn't match indexOf() from your list", 2, charList.indexOf(CHAR_VALUES[2]));
-        assertEquals("Expected value in Double list doesn't match indexOf() from your list", 3, doubleList.indexOf(DOUBLE_VALUES[3]));
+        assertEquals("Expected value in String list doesn't match indexOf() from your list",
+                0, stringList.indexOf(STRING_VALUES[0]));
+        assertEquals("Expected value in Integer list doesn't match indexOf() from your list",
+                1, intList.indexOf(INT_VALUES[1]));
+        assertEquals("Expected value in Character list doesn't match indexOf() from your list",
+                2, charList.indexOf(CHAR_VALUES[2]));
+        assertEquals("Expected value in Double list doesn't match indexOf() from your list",
+                3, doubleList.indexOf(DOUBLE_VALUES[3]));
     }
 
     @Test
@@ -324,7 +327,8 @@ public class DoubleLinkedListTest {
         doubleList.add(5, DOUBLE_VALUES[3]);
         System.out.println("new double list = " + doubleList);
 
-        assertEquals("Expected value in String list doesn't match indexOf() from your list", 0, stringList.indexOf(STRING_VALUES[0]));
+        assertEquals("Expected value in String list doesn't match indexOf() from your list",
+                0, stringList.indexOf(STRING_VALUES[0]));
         assertEquals("Expected value in Integer list doesn't match indexOf() from your list", 1, intList.indexOf(INT_VALUES[1]));
         assertEquals("Expected value in Character list doesn't match indexOf() from your list", 2, charList.indexOf(CHAR_VALUES[2]));
         assertEquals("Expected value in Double list doesn't match indexOf() from your list", 3, doubleList.indexOf(DOUBLE_VALUES[3]));

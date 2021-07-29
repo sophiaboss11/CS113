@@ -44,14 +44,17 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
 
   public E get(int index) 
   {
-     // if(size < index || index < 0){
-
-      //}
+      if((size() <= index) || (index < 0)){
+          throw new IndexOutOfBoundsException("Invalid index " );
+      }
+      if( size() == 0 || head == null){
+          throw new IndexOutOfBoundsException("Invalid index " );
+      }
     try {
         ListIterator<E> iter = listIterator(index);
         return iter.next();
     }catch(Exception e){
-        throw new IndexOutOfBoundsException("empty list, index == 0 " );
+        throw new IndexOutOfBoundsException("Invalid index " );
     }
 
   }  
@@ -151,11 +154,17 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
         head = null; tail = null; size = 0;
     }
 
-    public int indexOf(){
+    public int indexOf(Object o){
         for(int i=0; i< size; i++){
-            
-
+            ListIterator<E> iter = listIterator(i);
+            String nx = iter.next().toString();
+            if(nx.equals(o.toString())){
+                return i;
+            }else{
+                continue;
+            }
         }
+        return -1;
     }
 
     //@Override
