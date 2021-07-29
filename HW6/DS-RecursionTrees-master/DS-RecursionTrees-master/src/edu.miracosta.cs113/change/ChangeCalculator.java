@@ -18,13 +18,6 @@ import java.util.ArrayList;
  * verify that all given coin combinations are unique.
  */
 public class ChangeCalculator {
-    public static int[] coins = {0,0,0,0};
-    public static int[] coinVals = {25,10,5,1};
-    public static int[] pMaxVals= {1,1,1,1};
-    public static int numCombos = 0;
-    public static int remaining;// make perminent so it is not reset
-    public static String printElement;
-    public static ArrayList<String> printArray = new ArrayList<>();
 
     /**
      * Wrapper method for determining all possible unique combinations of quarters, dimes, nickels, and pennies that
@@ -39,9 +32,22 @@ public class ChangeCalculator {
      * @return the total number of unique combinations of coins of which the given value is comprised
      */
 
+    public static int[] coins = {0,0,0,0};
+    public static int[] coinVals = {25,10,5,1};
+    public static int[] pMaxVals= {1,1,1,1};
+    public static int numCombos = 0;
+    public static int remaining;// make perminent so it is not reset
+    public static String printElement;
+    public static ArrayList<String> printArray = new ArrayList<>();
+    public static int numIterations =0;
 
-    public static int calculateChange(int cents) {
+    public static void calculateChange(int cents) {
+        if(pMaxVals[3] == 0){
+            return;}
+
+
         //reset values
+        numIterations++;
         remaining = cents;
         for(int i = 0; i < 4; i++){
             coins[i] = 0;
@@ -61,39 +67,52 @@ public class ChangeCalculator {
                 if((remaining >= coinVals[i]) && pMaxVals[i] >0){
                     coins[i] ++;
                     remaining = remaining - coinVals[i];
+
+                    pMaxVals[i] = pMaxVals[i] - 1;
+                    // if(i == 0)   //reset previous max vals
+                    //pMaxVals[3] = cents;
+                    if(i==1)
+                        pMaxVals[0] = cents/25;
+                    else if(i==2)
+                        pMaxVals[1] = cents/10;
+                    else if(i==3)
+                        pMaxVals[2] = cents/5;
                 }else{continue;}
             }
         }
 
 
-        if(numCombos < 4){      //decrement max values
-            pMaxVals[numCombos] = pMaxVals[numCombos] -1;
-        }else if (numCombos >=4 && numCombos <= 7){
-            pMaxVals[numCombos - 4] = pMaxVals[numCombos-4] -1;
-        }else{
-            pMaxVals[numCombos%4] = pMaxVals[numCombos%4] -1;
-        }
-
         //populate array for printing
         printElement = "" + coins[0]+"Q, " + coins[1]+"D, "+ coins[2]+"N, "+ coins[3]+"P.\n";
-        if(!(printElement.equals(printArray.get(printArray.size()-1)))){
+        //boolean repeat=false;
+        //for(in)
+        if(!( printArray.contains(printElement) )){
             numCombos ++;
             System.out.println("combos: "+ numCombos);
             printArray.add(printElement);
         }
 
-        for(int i=0; i<4; i++){     //call method again if max values are 0
-            if(pMaxVals[i] > 0){
-                calculateChange(cents);
-            }else{
-                // if(i== numCombos%4)
-//                for(int j =0; j<printArray.size(); j++){
-//                    System.out.println("[" + j + "]\t" + printArray.get(j) );
-//                }
-            }
-        }
+        /*
+        if(numCombos < 4){      //decrement max values
+            pMaxVals[numCombos] = pMaxVals[numCombos] -1;
+            if(numCombos >= 1)
+                pMaxVals[numCombos-1] = 0;
+        }else if (numCombos >=4 && numCombos <= 7){
+            pMaxVals[numCombos - 4] = pMaxVals[numCombos-4] -1;
 
-        return numCombos;
+            if(numCombos > 5)
+                pMaxVals[numCombos-5] = 0;
+        }else{
+            pMaxVals[numCombos%4] = pMaxVals[numCombos%4] -1;
+
+            if(numCombos%4 != 0)
+                pMaxVals[numCombos%4 -1] = 0;
+        }
+        */
+
+
+        calculateChange(cents);
+
     }
 
     /**
