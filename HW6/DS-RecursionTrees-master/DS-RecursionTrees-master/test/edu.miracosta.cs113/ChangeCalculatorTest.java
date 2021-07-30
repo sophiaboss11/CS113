@@ -53,10 +53,13 @@ public class ChangeCalculatorTest {
 
     @Test
     public void testMultiplesOfFive() {
+
         for (int i = 0; i < FIVES.length; i ++) {
             ChangeCalculator.calculateChange(FIVES[i]);
+            //ChangeCalculator.printCombinationsToFile(FIVES[0]);
             assertEquals(FIVES_COMBINATIONS[i], ChangeCalculator.numCombos);
         }
+
     }
 
     @Test

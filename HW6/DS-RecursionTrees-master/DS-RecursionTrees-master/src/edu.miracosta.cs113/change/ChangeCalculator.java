@@ -6,6 +6,8 @@ import com.sun.source.tree.BinaryTree;
 import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.TreeVisitor;
 import java.util.ArrayList;
+import java.io.*;
+import java.util.Scanner;
 
 /**
  * ChangeCalculator : Class containing the recursive method calculateChange, which determines and prints all
@@ -43,6 +45,7 @@ public class ChangeCalculator {
 
     public static void calculateChange(int cents) {
         if(pMaxVals[3] == 0){
+            printCombinationsToFile( cents);
             return;}
 
 
@@ -127,14 +130,20 @@ public class ChangeCalculator {
     public static void printCombinationsToFile(int cents) {
         // TODO:
         // This when calculateChange is complete. Note that the text file must be created within this directory.
-//        try {
-//            ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream filename));
-//                            out.writeObject (nameOfObject);
-//        } catch (Exception ex) {
-//            ex.printStackTrace()
-//            System.exit
-//
-//        }
+        try {
+//            File file = new File("E:/School/cs-113/CS113/HW6/DS-RecursionTrees-master/DS-RecursionTrees-master/src" +
+//                    "/edu.miracosta.cs113/change/out.txt");
+            File file = new File("out.txt");
+//            Scanner in = new Scanner(printArray);
+            PrintWriter pr = new PrintWriter("file");
+            for(int i = 0 ; i < printArray.size(); i++){
+                pr.println(printArray.get(i) );
+            }
+            pr.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("No such file exists.");
+        }
     }
 
 } // End of class ChangeCalculator
